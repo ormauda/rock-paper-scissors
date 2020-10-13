@@ -6,6 +6,14 @@ public class LineFlyer : MonoBehaviour
 {
     private Vector2 velocityVector;
 
+    // Cached references
+    private new Rigidbody2D rigidbody2D;
+
+    private void Start()
+    {
+        rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -18,6 +26,7 @@ public class LineFlyer : MonoBehaviour
             transform.position.x + velocityVector.x * Time.deltaTime,
             transform.position.y + velocityVector.y * Time.deltaTime);
         transform.position = newPosition;
+        //rigidbody2D.AddForce(transform.forward * 2f);
     }
 
     public void SetVelocity(Vector2 velocity)

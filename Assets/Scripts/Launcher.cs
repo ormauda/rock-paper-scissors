@@ -50,37 +50,42 @@ public class Launcher : MonoBehaviour
 
         SetProjectileFromInput();
 
-        if (HasSwitchedProjectile(previousProjectilePrefab) || HasStoppedFiring(previousProjectilePrefab))
+        if (HasStoppedFiring(previousProjectilePrefab))
         {
-            Debug.Log("stopping coroutine");
+            Debug.Log("stopped firing");
             StopCoroutine(firingCoroutine);
         }
-
-        if (HasSwitchedProjectile(previousProjectilePrefab) || HasStartedFiring(previousProjectilePrefab))
+        else if (HasSwitchedProjectile(previousProjectilePrefab))
         {
-            Debug.Log("starting coroutine");
+            Debug.Log("switching projectile");
+            StartCoroutine(SleepSeconds(switchProjectileDelay));
+            StopCoroutine(firingCoroutine);
+            firingCoroutine = StartCoroutine(FireContinuously(selectedProjectilePrefab));
+        }
+        else if (HasStartedFiring(previousProjectilePrefab))
+        {
+            Debug.Log("starting firing");
             firingCoroutine = StartCoroutine(FireContinuously(selectedProjectilePrefab));
         }
     }
 
+    private IEnumerator SleepSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+    }
+
     private bool HasStoppedFiring(Projectile previousProjectile)
     {
-        if (selectedProjectilePrefab == null && previousProjectile != null)
-            Debug.Log("stopped firing");
         return selectedProjectilePrefab == null && previousProjectile != null;
     }
 
     private bool HasSwitchedProjectile(Projectile previousProjectile)
     {
-        if (selectedProjectilePrefab != previousProjectile && previousProjectile != null && selectedProjectilePrefab != null)
-            Debug.Log("switching projectile");
         return selectedProjectilePrefab != previousProjectile && previousProjectile != null && selectedProjectilePrefab != null;
     }
 
     private bool HasStartedFiring(Projectile previousProjectile)
     {
-        if (selectedProjectilePrefab != null && previousProjectile == null)
-            Debug.Log("starting firing");
         return selectedProjectilePrefab != null && previousProjectile == null;
     }
 
