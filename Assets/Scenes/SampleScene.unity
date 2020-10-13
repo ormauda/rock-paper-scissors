@@ -468,6 +468,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 226638265780750594, guid: 62e3c79f472f30e4fb377106d02fd58b,
+        type: 3}
+      propertyPath: switchProjectileDelay
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62e3c79f472f30e4fb377106d02fd58b, type: 3}
 --- !u!1001 &856685919189699273
@@ -834,6 +839,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8505421257771565923, guid: 88dc91d10acbb5e4fabb58a0eb576cf3,
+        type: 3}
+      propertyPath: maxSpawnDelayInSeconds
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88dc91d10acbb5e4fabb58a0eb576cf3, type: 3}
