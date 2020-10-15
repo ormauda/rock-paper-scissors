@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackType: 1
+  scoreValue: 1
 --- !u!114 &4432060523865553117
 MonoBehaviour:
   m_ObjectHideFlags: 0

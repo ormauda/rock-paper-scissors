@@ -60,19 +60,16 @@ public class Launcher : MonoBehaviour
 
         if (HasStoppedFiring(previousProjectilePrefab))
         {
-            Debug.Log("stopped firing");
             StopCoroutine(firingCoroutine);
         }
         else if (HasSwitchedProjectile(previousProjectilePrefab))
         {
-            Debug.Log("switching projectile");
             StartCoroutine(SleepSeconds(switchProjectileDelay));
             StopCoroutine(firingCoroutine);
             firingCoroutine = StartCoroutine(FireContinuously(selectedProjectilePrefab));
         }
         else if (HasStartedFiring(previousProjectilePrefab))
         {
-            Debug.Log("starting firing");
             firingCoroutine = StartCoroutine(FireContinuously(selectedProjectilePrefab));
         }
     }

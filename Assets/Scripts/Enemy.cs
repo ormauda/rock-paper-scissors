@@ -21,19 +21,6 @@ public class Enemy : MonoBehaviour
         gameSession = FindObjectOfType<GameSession>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-
-    private void OnTriggerEnter2D(Collider2D otherCollider)
-    {
-        HandleLauncherTrigger(otherCollider);
-        //HandleShredderTrigger(otherCollider);
-    }
-
     public void TouchShredder()
     {
         if (firstShredderTouch)
@@ -45,34 +32,14 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    private bool HandleLauncherTrigger(Collider2D otherCollider)
+    private void OnTriggerEnter2D(Collider2D otherCollider)
     {
         var launcher = otherCollider.gameObject.GetComponent<Launcher>();
         if (launcher)
         {
             launcher.TakeHit();
-            return true;
         }
-        return false;
     }
-
-    //private void HandleShredderTrigger(Collider2D otherCollider)
-    //{
-    //    var shredder = otherCollider.gameObject.GetComponent<Shredder>();
-    //    if (!shredder)
-    //    {
-    //        return;
-    //    }
-    //    if (isOnScreen)
-    //    {
-    //        Destroy(gameObject);
-    //    }
-    //    else
-    //    {
-    //        isOnScreen = true;
-    //    }
-    //}
 
     public void TakeHit()
     {
