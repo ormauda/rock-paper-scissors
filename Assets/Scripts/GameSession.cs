@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,17 +7,12 @@ public class GameSession : MonoBehaviour
 {
 
     [SerializeField] int score = 0;
+    [SerializeField] int life = 1;
 
     // Start is called before the first frame update
     void Start()
     {
         SetUpSingletone();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public int GetScore()
@@ -27,6 +23,15 @@ public class GameSession : MonoBehaviour
     public void AddScore(int scoreToAdd)
     {
         score += scoreToAdd;
+    }
+    public void ReduceLife()
+    {
+        life--;
+    }
+
+    internal object GetLife()
+    {
+        return life;
     }
 
     private void SetUpSingletone()

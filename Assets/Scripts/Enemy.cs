@@ -25,7 +25,21 @@ public class Enemy : MonoBehaviour
         
     }
 
-    public void Hit()
+    void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        var launcher = collision.gameObject.GetComponent<Launcher>();
+        if (launcher)
+        {
+            launcher.TakeHit();
+        }
+    }
+
+    public void TakeHit()
     {
         gameSession.AddScore(scoreValue);
         Destroy(gameObject);

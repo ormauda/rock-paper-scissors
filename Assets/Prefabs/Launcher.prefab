@@ -92,9 +92,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 622c147e533c02a429c17a708c867274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 455
+  rotationSpeed: 800
   projectilesPrefabs:
   - {fileID: 6140118662423127101, guid: de704e99ebf65fc40961eb00dcd7326e, type: 3}
   - {fileID: 4374311512883756538, guid: de924b0dbfb8b624f8eb46efaa249dad, type: 3}
   - {fileID: 86014299588594477, guid: 2c2e33808093ac846a62a58ec4b3d517, type: 3}
   launchSpeed: 10
+  projectileFirePeriod: 1
+  switchProjectileDelay: 1

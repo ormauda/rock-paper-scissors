@@ -30,7 +30,7 @@ public class Projectile : MonoBehaviour
         var targetAttackType = target.GetAttackType();
         if (GetDominatorOf(targetAttackType) == attackType)
         {
-            target.Hit();
+            target.TakeHit();
         }
 
     }

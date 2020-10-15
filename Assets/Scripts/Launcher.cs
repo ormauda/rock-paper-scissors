@@ -18,10 +18,13 @@ public class Launcher : MonoBehaviour
     private readonly string paperButtonName = "Fire2";
     private readonly string rockButtonName = "Fire3";
 
+    // Cached references
+    private GameSession gameSession;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        gameSession = FindObjectOfType<GameSession>();
     }
 
     // Update is called once per frame
@@ -29,6 +32,11 @@ public class Launcher : MonoBehaviour
     {
         Rotate();
         Fire();
+    }
+
+    public void TakeHit()
+    {
+        gameSession.ReduceLife();
     }
 
     private void Rotate()
