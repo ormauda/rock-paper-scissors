@@ -8,11 +8,15 @@ public class Enemy : MonoBehaviour
 {
 
     [SerializeField] AttackType attackType;
+    [SerializeField] int scoreValue = 1;
+
+    // Cached References
+    private GameSession gameSession;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameSession = FindObjectOfType<GameSession>();
     }
 
     // Update is called once per frame
@@ -23,6 +27,7 @@ public class Enemy : MonoBehaviour
 
     public void Hit()
     {
+        gameSession.AddScore(scoreValue);
         Destroy(gameObject);
     }
 
