@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] AttackType attackType;
     [SerializeField] int scoreValue = 1;
 
+    private bool firstShredderTouch = true;
+
     // Cached References
     private GameSession gameSession;
 
@@ -22,22 +24,55 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    void OnBecameInvisible()
+
+    private void OnTriggerEnter2D(Collider2D otherCollider)
     {
-        Destroy(gameObject);
+        HandleLauncherTrigger(otherCollider);
+        //HandleShredderTrigger(otherCollider);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void TouchShredder()
     {
-        var launcher = collision.gameObject.GetComponent<Launcher>();
+        if (firstShredderTouch)
+        {
+            firstShredderTouch = false;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private bool HandleLauncherTrigger(Collider2D otherCollider)
+    {
+        var launcher = otherCollider.gameObject.GetComponent<Launcher>();
         if (launcher)
         {
             launcher.TakeHit();
+            return true;
         }
+        return false;
     }
+
+    //private void HandleShredderTrigger(Collider2D otherCollider)
+    //{
+    //    var shredder = otherCollider.gameObject.GetComponent<Shredder>();
+    //    if (!shredder)
+    //    {
+    //        return;
+    //    }
+    //    if (isOnScreen)
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //    else
+    //    {
+    //        isOnScreen = true;
+    //    }
+    //}
 
     public void TakeHit()
     {
