@@ -9,10 +9,14 @@ public class GameSession : MonoBehaviour
     [SerializeField] int score = 0;
     [SerializeField] int life = 1;
 
+    // Cached references
+    ScreenLoader screenLoader;
+
     // Start is called before the first frame update
     void Start()
     {
         SetUpSingletone();
+        screenLoader = FindObjectOfType<ScreenLoader>();
     }
 
     public int GetScore()
@@ -27,6 +31,10 @@ public class GameSession : MonoBehaviour
     public void ReduceLife()
     {
         life--;
+        if (life <= 0)
+        {
+            screenLoader.LoadYouLose();
+        }
     }
 
     internal object GetLife()
