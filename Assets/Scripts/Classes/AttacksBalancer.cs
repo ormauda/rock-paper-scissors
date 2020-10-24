@@ -9,7 +9,7 @@ namespace Assets.Scripts.Classes
 {
     public class AttacksBalancer
     {
-        public AttackType GetDominatorOf(AttackType attack)
+        public static AttackType GetDominatorOf(AttackType attack)
         {
             switch (attack)
             {

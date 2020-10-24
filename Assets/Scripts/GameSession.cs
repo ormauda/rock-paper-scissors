@@ -28,6 +28,12 @@ public class GameSession : MonoBehaviour
     {
         score += scoreToAdd;
     }
+
+    public void ReduceScore(int scoreToReduce)
+    {
+        score -= scoreToReduce;
+    }
+
     public void ReduceLife()
     {
         life--;

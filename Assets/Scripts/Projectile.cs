@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Enums;
+﻿using Assets.Scripts.Classes;
+using Assets.Scripts.Enums;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,6 +8,15 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] AttackType attackType;
+
+    // Cached references
+    GameSession gameSession;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        gameSession = FindObjectOfType<GameSession>();
+    }
 
     public void Launch(Vector2 velocity)
     {
@@ -19,30 +29,31 @@ public class Projectile : MonoBehaviour
         lineFlyer.SetVelocity(velocity);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D otherCollider)
     {
-        var target = collision.gameObject.GetComponent<Enemy>();
+        var target = otherCollider.gameObject.GetComponent<Enemy>();
         if (target == null)
         {
             return;
         }
 
         var targetAttackType = target.GetAttackType();
-        if (GetDominatorOf(targetAttackType) == attackType)
+        if (AttacksBalancer.GetDominatorOf(targetAttackType) == attackType)
         {
             target.TakeHit();
+            Destroy(gameObject);
+        }
+        else if (AttacksBalancer.GetDominatorOf(attackType) == targetAttackType)
+        {
+            Destroy(otherCollider.gameObject);
+            TakeHit();
         }
 
     }
 
-    private AttackType GetDominatorOf(AttackType attack)
+    private void TakeHit()
     {
-        switch (attack)
-        {
-            case AttackType.Rock: return AttackType.Paper;
-            case AttackType.Paper: return AttackType.Scissors;
-            case AttackType.Scissors: return AttackType.Rock;
-            default: throw new ArgumentException($"There is no such type of attack: {attack}");
-        };
+        gameSession.ReduceScore(1);
+        Destroy(gameObject);
     }
 }
