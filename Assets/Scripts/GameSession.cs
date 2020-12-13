@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameSession : MonoBehaviour
 {
@@ -9,13 +10,18 @@ public class GameSession : MonoBehaviour
     [SerializeField] int score = 0;
     [SerializeField] int life = 1;
 
+
     // Cached references
     ScreenLoader screenLoader;
+
+    private void Awake()
+    {
+        SetUpSingletone();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        SetUpSingletone();
         screenLoader = FindObjectOfType<ScreenLoader>();
     }
 
@@ -46,6 +52,12 @@ public class GameSession : MonoBehaviour
     internal object GetLife()
     {
         return life;
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(0);
+        Destroy(gameObject);
     }
 
     private void SetUpSingletone()

@@ -504,8 +504,9 @@ GameObject:
   - component: {fileID: 812609723}
   - component: {fileID: 812609722}
   - component: {fileID: 812609721}
+  - component: {fileID: 812609724}
   m_Layer: 5
-  m_Name: Button
+  m_Name: RestartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -571,7 +572,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1796343983}
+      - m_Target: {fileID: 812609724}
         m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:
@@ -621,6 +622,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 812609719}
   m_CullTransparentMesh: 0
+--- !u!114 &812609724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812609719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27a3cd2d5dd72c545a6c93bb1bb2fb91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &971977530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1175,18 +1188,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1661173363}
   m_CullTransparentMesh: 0
---- !u!114 &1796343983 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6203751612777530954, guid: c55bc61816b31934d9ce871c0d44635a,
-    type: 3}
-  m_PrefabInstance: {fileID: 6203751614504668901}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1386cdcda1608e44583d33fa33c28b6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6203751614504668901
 PrefabInstance:
   m_ObjectHideFlags: 0
