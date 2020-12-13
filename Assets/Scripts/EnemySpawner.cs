@@ -8,10 +8,13 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] float spinSpeed = 500f;
     [SerializeField] Enemy[] enemyPrefabs;
-    [SerializeField] float enemyLaunchSpeed = 20f;
-    
-    
-    [SerializeField] float baseSpawnDelayInSeconds = 3f;
+
+    [SerializeField] float enemyLaunchSpeed = 2f;
+    [SerializeField] float enemySpeedIncreaseRate = 0.02f;
+    [SerializeField] [Range(0, 1)] float enemySpeedRandomnessFactor = 0.1f;
+
+
+    [SerializeField] float baseSpawnDelayInSeconds = 2f;
     [SerializeField] float spawnDelayProgressionFactor = 200f;
     [SerializeField] [Range(0, 1)] float spawnDelayRandomnessFactor = 0.1f;
 
@@ -39,8 +42,8 @@ public class EnemySpawner : MonoBehaviour
     {
         while (true)
         {
-            float randomDelay = GetRandomSpawnDelay();
-            yield return new WaitForSeconds(randomDelay);
+            float spawnDelay = GetRandomSpawnDelay();
+            yield return new WaitForSeconds(spawnDelay);
             SpawnEnemy();
         }
     }
@@ -53,8 +56,8 @@ public class EnemySpawner : MonoBehaviour
             time = spawnDelayProgressionFactor;
         }
         var baseDelay = Math.Abs(baseSpawnDelayInSeconds - time / spawnDelayProgressionFactor);
-        var minSpawnDelay = baseDelay - baseDelay * spawnDelayRandomnessFactor;
-        var maxSpawnDelay = baseDelay + baseDelay * spawnDelayRandomnessFactor;
+        var minSpawnDelay = baseDelay * (1 - spawnDelayRandomnessFactor);
+        var maxSpawnDelay = baseDelay * (1 + spawnDelayRandomnessFactor);
         var randomDelay = Random.Range(minSpawnDelay, maxSpawnDelay);
         return randomDelay;
     }
@@ -64,7 +67,19 @@ public class EnemySpawner : MonoBehaviour
         var enemyPrefab = GetRandomEnemyPrefab();
         var newEnemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
         var enemyDirection = CalculateEnemyDirection();
-        newEnemy.Launch(enemyDirection * enemyLaunchSpeed);
+        float enemySpeed = GetRandomEnemySpeed();
+
+        newEnemy.Launch(enemyDirection * enemySpeed);
+    }
+
+    private float GetRandomEnemySpeed()
+    {
+        var time = clock.GetTimeSinceStart();
+        var enemyBaseSpeed = enemyLaunchSpeed + time * enemySpeedIncreaseRate;
+        var minEnemySpeed = enemyBaseSpeed * (1 - enemySpeedRandomnessFactor);
+        var maxEnemySpeed = enemyBaseSpeed * (1 + enemySpeedRandomnessFactor);
+        var randomSpeed = Random.Range(minEnemySpeed, maxEnemySpeed);
+        return randomSpeed;
     }
 
     private Enemy GetRandomEnemyPrefab()

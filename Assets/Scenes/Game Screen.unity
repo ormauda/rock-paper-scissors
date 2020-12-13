@@ -1223,8 +1223,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8505421257771565923, guid: 88dc91d10acbb5e4fabb58a0eb576cf3,
         type: 3}
+      propertyPath: enemySpeedRandomnessFactor
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8505421257771565923, guid: 88dc91d10acbb5e4fabb58a0eb576cf3,
+        type: 3}
+      propertyPath: spawnDelayProgressionFactor
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8505421257771565923, guid: 88dc91d10acbb5e4fabb58a0eb576cf3,
+        type: 3}
       propertyPath: spawnDelayRandomnessFactor
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88dc91d10acbb5e4fabb58a0eb576cf3, type: 3}
