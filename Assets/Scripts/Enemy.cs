@@ -38,6 +38,7 @@ public class Enemy : MonoBehaviour
         if (launcher)
         {
             launcher.TakeHit();
+            Destroy(gameObject);
         }
     }
 
