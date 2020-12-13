@@ -9,11 +9,18 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float spinSpeed = 500f;
     [SerializeField] Enemy[] enemyPrefabs;
     [SerializeField] float enemyLaunchSpeed = 20f;
-    [SerializeField] float minSpawnDelayInSeconds = 1f;
-    [SerializeField] float maxSpawnDelayInSeconds = 2f;
+    
+    
+    [SerializeField] float baseSpawnDelayInSeconds = 3f;
+    [SerializeField] float spawnDelayProgressionFactor = 200f;
+    [SerializeField] [Range(0, 1)] float spawnDelayRandomnessFactor = 0.1f;
+
+    // Cached references
+    Clock clock;
 
     private void Start()
     {
+        clock = FindObjectOfType<Clock>();
         StartCoroutine(SpawnEnemies());
     }
 
@@ -32,10 +39,24 @@ public class EnemySpawner : MonoBehaviour
     {
         while (true)
         {
-            var randomDelay = Random.Range(minSpawnDelayInSeconds, maxSpawnDelayInSeconds);
+            float randomDelay = GetRandomSpawnDelay();
             yield return new WaitForSeconds(randomDelay);
             SpawnEnemy();
         }
+    }
+
+    private float GetRandomSpawnDelay()
+    {
+        var time = clock.GetTimeSinceStart();
+        if (time > spawnDelayProgressionFactor)
+        {
+            time = spawnDelayProgressionFactor;
+        }
+        var baseDelay = Math.Abs(baseSpawnDelayInSeconds - time / spawnDelayProgressionFactor);
+        var minSpawnDelay = baseDelay - baseDelay * spawnDelayRandomnessFactor;
+        var maxSpawnDelay = baseDelay + baseDelay * spawnDelayRandomnessFactor;
+        var randomDelay = Random.Range(minSpawnDelay, maxSpawnDelay);
+        return randomDelay;
     }
 
     private void SpawnEnemy()

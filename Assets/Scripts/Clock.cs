@@ -21,11 +21,11 @@ public class Clock : MonoBehaviour
     void Update()
     {
         timeSinceStart += Time.deltaTime;
-        clockText.text = timeSinceStart.ToString("F2");
+        clockText.text = timeSinceStart.ToString("F1");
     }
 
-    string PadWithLeadingZero(int number)
+    public float GetTimeSinceStart()
     {
-        return number.ToString().PadLeft(2, '0');
+        return timeSinceStart;
     }
 }
