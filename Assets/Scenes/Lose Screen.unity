@@ -716,7 +716,7 @@ GameObject:
   - component: {fileID: 1066931126}
   - component: {fileID: 1066931125}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Lose Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1122,7 +1122,7 @@ GameObject:
   - component: {fileID: 1661173366}
   - component: {fileID: 1661173365}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Lose Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

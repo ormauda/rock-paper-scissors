@@ -10,6 +10,8 @@ public class Launcher : MonoBehaviour
     [SerializeField] float launchSpeed = 10f;
     [SerializeField] float projectileFirePeriod = 1f;
     [SerializeField] float switchProjectileDelay = 0.2f;
+    [SerializeField] AudioClip deathSfx;
+    [SerializeField] [Range(0, 1)] float deathSfxVolume;
 
     private Coroutine firingCoroutine;
     private Projectile selectedProjectilePrefab = null;
@@ -36,6 +38,7 @@ public class Launcher : MonoBehaviour
 
     public void TakeHit()
     {
+        AudioSource.PlayClipAtPoint(deathSfx, Camera.main.transform.position, deathSfxVolume);
         gameSession.ReduceLife();
     }
 
