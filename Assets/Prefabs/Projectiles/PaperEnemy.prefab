@@ -97,6 +97,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackType: 1
   scoreValue: 1
+  deathSfx: {fileID: 8300000, guid: 850d86cbbec8eea448101167709d677e, type: 3}
+  deathSfxVolume: 1
 --- !u!114 &4432060523865553117
 MonoBehaviour:
   m_ObjectHideFlags: 0

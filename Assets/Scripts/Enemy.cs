@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] AttackType attackType;
     [SerializeField] int scoreValue = 1;
+    [SerializeField] AudioClip deathSfx;
+    [SerializeField] [Range(0, 1)] float deathSfxVolume = 1f;
 
     private bool firstShredderTouch = true;
 
@@ -46,6 +48,7 @@ public class Enemy : MonoBehaviour
     {
         gameSession.AddScore(scoreValue);
         Destroy(gameObject);
+        AudioSource.PlayClipAtPoint(deathSfx, Camera.main.transform.position, deathSfxVolume);
     }
 
     public void Launch(Vector2 velocity)
