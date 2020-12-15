@@ -8,6 +8,9 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] AttackType attackType;
+    
+    [SerializeField] AudioClip deathSfx;
+    [SerializeField] [Range(0, 1)] float deathSfxVolume = 1f;
 
     // Cached references
     GameSession gameSession;
@@ -54,6 +57,7 @@ public class Projectile : MonoBehaviour
     private void TakeHit()
     {
         gameSession.ReduceScore(1);
+        AudioSource.PlayClipAtPoint(deathSfx, Camera.main.transform.position, deathSfxVolume);
         Destroy(gameObject);
     }
 }
