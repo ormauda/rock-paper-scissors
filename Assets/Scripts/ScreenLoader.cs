@@ -5,13 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class ScreenLoader : MonoBehaviour
 {
-    public void RestartGame()
+    // Cached references
+    GameSession gameSession;
+
+    public void Start()
     {
-        SceneManager.LoadScene("Game Screen");
+        gameSession = FindObjectOfType<GameSession>();
+
     }
 
-    public void LoadYouLose()
+    public IEnumerable RestartGame()
     {
-        SceneManager.LoadScene("Lose Screen");
+        Time.timeScale = 1;
+        var asyncLoadLevelResult = SceneManager.LoadSceneAsync("Game Screen", LoadSceneMode.Single);
+        while (!asyncLoadLevelResult.isDone)
+        {
+            yield return null;
+        }
+        gameSession.InitSession();
     }
 }
