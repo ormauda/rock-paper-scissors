@@ -24,7 +24,7 @@ public class GameController : MonoBehaviour
 
     public void Lose()
     {
-        StartCoroutine(PlayLoseSound());
+        StartCoroutine(handleLose());
     }
 
     public void RestartGame()
@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour
         screenLoader.RestartGame();
     }
 
-    private IEnumerator PlayLoseSound()
+    private IEnumerator handleLose()
     {
         Time.timeScale = 0;
         audioSource.Play();

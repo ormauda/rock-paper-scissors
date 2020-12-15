@@ -47,8 +47,8 @@ public class Enemy : MonoBehaviour
     public void TakeHit()
     {
         gameSession.AddScore(scoreValue);
-        Destroy(gameObject);
         AudioSource.PlayClipAtPoint(deathSfx, Camera.main.transform.position, deathSfxVolume);
+        Destroy(gameObject);
     }
 
     public void Launch(Vector2 velocity)
