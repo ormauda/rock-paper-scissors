@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,19 +25,59 @@ public class Launcher : MonoBehaviour
     // Cached references
     private GameSession gameSession;
     private Slider mobileControls;
+    private Button scissorsMobileButton;
+    private Button paperMobileButton;
+    private Button rockMobileButton;
+
+    private static class ProjectileIndex
+    {
+        public const int scissors = 0;
+        public const int paper = 1;
+        public const int rock = 2;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         gameSession = FindObjectOfType<GameSession>();
-        mobileControls = GameObject.Find("Mobile Rotation Slider")?.GetComponent<Slider>();
+        SetUpMobileButtons();
+    }
+
+    private void SetUpMobileButtons()
+    {
+        var mobileRotationSlider = GameObject.Find("Mobile Rotation Slider");
+        if (!mobileRotationSlider)
+        {
+            Debug.Log("Desktop mode");
+            return;
+        }
+        mobileControls = mobileRotationSlider.GetComponent<Slider>();
+        scissorsMobileButton = GameObject.Find("Scissors Button").GetComponent<Button>();
+        paperMobileButton = GameObject.Find("Paper Button").GetComponent<Button>();
+        rockMobileButton = GameObject.Find("Rock Button").GetComponent<Button>();
+
+        scissorsMobileButton.onClick.AddListener(() => buttonCalback(ProjectileIndex.scissors));
+        paperMobileButton.onClick.AddListener(() => buttonCalback(ProjectileIndex.paper));
+        rockMobileButton.onClick.AddListener(() => buttonCalback(ProjectileIndex.rock));
+    }
+
+    private void buttonCalback(int projectileIndex)
+    {
+        Debug.Log("pressed index:" + projectileIndex);
+        var projectileToLaunch = projectilesPrefabs[projectileIndex];
+        LaunchProjectile(projectileToLaunch);
     }
 
     // Update is called once per frame
     void Update()
     {
         Rotate();
-        Fire();
+
+        // In mobile, the fire action happens using the button event handlers registered in the start.
+        if (!IsMobile())
+        {
+            Fire();
+        }
     }
 
     public void TakeHit()
@@ -59,6 +100,11 @@ public class Launcher : MonoBehaviour
         var newZRotation = transform.rotation.z - deltaZ * rotationSpeed;
         var rotationVector = new Vector3(0, 0, newZRotation);
         transform.Rotate(rotationVector * Time.deltaTime);
+    }
+
+    private bool IsMobile()
+    {
+        return mobileControls != null;
     }
 
     private void Fire()
@@ -107,11 +153,16 @@ public class Launcher : MonoBehaviour
     {
         while (true)
         {
-            var newProjectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-            var launchDirection = CalculateLaunchDirection();
-            newProjectile.Launch(launchDirection * launchSpeed);
+            LaunchProjectile(projectilePrefab);
             yield return new WaitForSeconds(projectileFirePeriod);
         }
+    }
+
+    private void LaunchProjectile(Projectile projectilePrefab)
+    {
+        var newProjectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        var launchDirection = CalculateLaunchDirection();
+        newProjectile.Launch(launchDirection * launchSpeed);
     }
 
     private void SetProjectileFromInput()
