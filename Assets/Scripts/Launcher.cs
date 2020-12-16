@@ -14,6 +14,7 @@ public class Launcher : MonoBehaviour
     [SerializeField] float switchProjectileDelay = 0.2f;
     [SerializeField] AudioClip deathSfx;
     [SerializeField] [Range(0, 1)] float deathSfxVolume;
+    //[SerializeField] Joystick mobileJoystick;
 
     private Coroutine firingCoroutine;
     private Projectile selectedProjectilePrefab = null;
@@ -24,7 +25,6 @@ public class Launcher : MonoBehaviour
 
     // Cached references
     private GameSession gameSession;
-    private Slider mobileControls;
     private Button scissorsMobileButton;
     private Button paperMobileButton;
     private Button rockMobileButton;
@@ -45,14 +45,12 @@ public class Launcher : MonoBehaviour
 
     private void SetUpMobileButtons()
     {
-        var mobileRotationSlider = GameObject.Find("Mobile Rotation Slider");
-        if (!mobileRotationSlider)
+        scissorsMobileButton = GameObject.Find("Scissors Button").GetComponent<Button>();
+        if (!scissorsMobileButton)
         {
             Debug.Log("Desktop mode");
             return;
         }
-        mobileControls = mobileRotationSlider.GetComponent<Slider>();
-        scissorsMobileButton = GameObject.Find("Scissors Button").GetComponent<Button>();
         paperMobileButton = GameObject.Find("Paper Button").GetComponent<Button>();
         rockMobileButton = GameObject.Find("Rock Button").GetComponent<Button>();
 
@@ -88,9 +86,9 @@ public class Launcher : MonoBehaviour
 
     private void Rotate()
     {
-        var deltaZ = mobileControls ?
-            mobileControls.value :
-            Input.GetAxis("Horizontal");
+        var deltaZ = IsMobile() ? 1 : 2;
+        //    mobileJoystick.Horizontal :
+        //    Input.GetAxis("Horizontal");
 
         if (Mathf.Abs(deltaZ) < Mathf.Epsilon)
         {
@@ -104,7 +102,7 @@ public class Launcher : MonoBehaviour
 
     private bool IsMobile()
     {
-        return mobileControls != null;
+        return scissorsMobileButton != null;
     }
 
     private void Fire()

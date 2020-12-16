@@ -103,7 +103,7 @@ MonoBehaviour:
   switchProjectileDelay: 1
   deathSfx: {fileID: 8300000, guid: b1325876e3a60d34c9940ac4ef0a5701, type: 3}
   deathSfxVolume: 1
-  scissorsButton: {fileID: 0}
+  mobileJoystick: {fileID: 0}
 --- !u!60 &1722366362
 PolygonCollider2D:
   m_ObjectHideFlags: 0
