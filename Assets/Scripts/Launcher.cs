@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Launcher : MonoBehaviour
 {
@@ -22,11 +23,13 @@ public class Launcher : MonoBehaviour
 
     // Cached references
     private GameSession gameSession;
+    private Slider mobileControls;
 
     // Start is called before the first frame update
     void Start()
     {
         gameSession = FindObjectOfType<GameSession>();
+        mobileControls = GameObject.Find("Mobile Rotation Slider")?.GetComponent<Slider>();
     }
 
     // Update is called once per frame
@@ -44,7 +47,10 @@ public class Launcher : MonoBehaviour
 
     private void Rotate()
     {
-        var deltaZ = Input.GetAxis("Horizontal");
+        var deltaZ = mobileControls ?
+            mobileControls.value :
+            Input.GetAxis("Horizontal");
+
         if (Mathf.Abs(deltaZ) < Mathf.Epsilon)
         {
             return;
