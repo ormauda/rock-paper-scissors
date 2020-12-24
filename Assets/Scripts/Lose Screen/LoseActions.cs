@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Restart : MonoBehaviour
+public class LoseActions : MonoBehaviour
 {
     // Cached references
     GameSession gameSession;
@@ -16,5 +16,10 @@ public class Restart : MonoBehaviour
     public void RestartGame()
     {
         gameSession.RestartGame();
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }
