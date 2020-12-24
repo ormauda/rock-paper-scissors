@@ -29,11 +29,17 @@ public class Launcher : MonoBehaviour
     private Button paperMobileButton;
     private Button rockMobileButton;
 
+    private FixedJoystick mobileJoystick;
+
     private static class ProjectileIndex
     {
         public const int scissors = 0;
         public const int paper = 1;
         public const int rock = 2;
+    }
+
+    private void Awake()
+    {
     }
 
     // Start is called before the first frame update
@@ -51,9 +57,11 @@ public class Launcher : MonoBehaviour
             Debug.Log("Desktop mode");
             return;
         }
+        mobileJoystick = GameObject.FindWithTag("Joystick").GetComponent<FixedJoystick>();
         scissorsMobileButton = GameObject.Find("Scissors Button").GetComponent<Button>();
         paperMobileButton = GameObject.Find("Paper Button").GetComponent<Button>();
         rockMobileButton = GameObject.Find("Rock Button").GetComponent<Button>();
+
 
         scissorsMobileButton.onClick.AddListener(() => buttonCalback(ProjectileIndex.scissors));
         paperMobileButton.onClick.AddListener(() => buttonCalback(ProjectileIndex.paper));
@@ -87,8 +95,8 @@ public class Launcher : MonoBehaviour
 
     private void Rotate()
     {
-        var deltaZ = IsMobile() ? 1 :
-            //mobileJoystick.Horizontal :
+        var deltaZ = IsMobile() ?
+            mobileJoystick.Horizontal :
             Input.GetAxis("Horizontal");
 
         if (Mathf.Abs(deltaZ) < Mathf.Epsilon)
