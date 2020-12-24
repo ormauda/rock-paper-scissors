@@ -48,8 +48,8 @@ MonoBehaviour:
   - {fileID: 5361258917438309652, guid: cd0fdd44c55139c489d376c8586aba78, type: 3}
   - {fileID: 4854341359665559459, guid: 5c1f2b6aefdde194085dd9f0c979b3d6, type: 3}
   - {fileID: 2348876417005840565, guid: 7e9a25eecd3116a458574dc6d935b39c, type: 3}
-  enemyLaunchSpeed: 2
-  enemySpeedIncreaseRate: 0.02
+  enemyLaunchSpeed: 35
+  enemySpeedIncreaseRate: 0.2
   enemySpeedRandomnessFactor: 0.5
   baseSpawnDelayInSeconds: 2
   spawnDelayProgressionFactor: 1500

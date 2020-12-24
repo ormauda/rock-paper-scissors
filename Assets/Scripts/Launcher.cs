@@ -45,12 +45,13 @@ public class Launcher : MonoBehaviour
 
     private void SetUpMobileButtons()
     {
-        scissorsMobileButton = GameObject.Find("Scissors Button").GetComponent<Button>();
-        if (!scissorsMobileButton)
+        var scissorsButtonObject = GameObject.Find("Scissors Button");
+        if (!scissorsButtonObject)
         {
             Debug.Log("Desktop mode");
             return;
         }
+        scissorsMobileButton = GameObject.Find("Scissors Button").GetComponent<Button>();
         paperMobileButton = GameObject.Find("Paper Button").GetComponent<Button>();
         rockMobileButton = GameObject.Find("Rock Button").GetComponent<Button>();
 
@@ -86,9 +87,9 @@ public class Launcher : MonoBehaviour
 
     private void Rotate()
     {
-        var deltaZ = IsMobile() ? 1 : 2;
-        //    mobileJoystick.Horizontal :
-        //    Input.GetAxis("Horizontal");
+        var deltaZ = IsMobile() ? 1 :
+            //mobileJoystick.Horizontal :
+            Input.GetAxis("Horizontal");
 
         if (Mathf.Abs(deltaZ) < Mathf.Epsilon)
         {
