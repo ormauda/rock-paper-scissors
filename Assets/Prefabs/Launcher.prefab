@@ -98,7 +98,7 @@ MonoBehaviour:
   - {fileID: 6140118662423127101, guid: de704e99ebf65fc40961eb00dcd7326e, type: 3}
   - {fileID: 4374311512883756538, guid: de924b0dbfb8b624f8eb46efaa249dad, type: 3}
   - {fileID: 86014299588594477, guid: 2c2e33808093ac846a62a58ec4b3d517, type: 3}
-  launchSpeed: 10
+  launchSpeed: 80
   projectileFirePeriod: 1
   switchProjectileDelay: 1
   deathSfx: {fileID: 8300000, guid: b1325876e3a60d34c9940ac4ef0a5701, type: 3}
