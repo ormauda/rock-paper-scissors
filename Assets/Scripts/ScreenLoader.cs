@@ -24,4 +24,24 @@ public class ScreenLoader : MonoBehaviour
         }
         gameSession.InitSession();
     }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene("Game Screen");
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("Welcome Screen");
+    }
+
+    public void LoadCredits()
+    {
+        SceneManager.LoadScene("Credits Screen");
+    }
+
+    public void LoadHowToPlay()
+    {
+        SceneManager.LoadScene("How To Play Screen");
+    }
 }
