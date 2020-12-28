@@ -193,12 +193,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 7436022839378904357, guid: a4e636c50d8bce64abdf6fb23f02f6b4,
+    - target: {fileID: 7436022837903042722, guid: a4e636c50d8bce64abdf6fb23f02f6b4,
         type: 3}
       propertyPath: m_havePropertiesChanged
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7436022839378904357, guid: a4e636c50d8bce64abdf6fb23f02f6b4,
+    - target: {fileID: 7436022837903042722, guid: a4e636c50d8bce64abdf6fb23f02f6b4,
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 0
@@ -213,12 +213,12 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7436022837903042722, guid: a4e636c50d8bce64abdf6fb23f02f6b4,
+    - target: {fileID: 7436022839378904357, guid: a4e636c50d8bce64abdf6fb23f02f6b4,
         type: 3}
       propertyPath: m_havePropertiesChanged
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7436022837903042722, guid: a4e636c50d8bce64abdf6fb23f02f6b4,
+    - target: {fileID: 7436022839378904357, guid: a4e636c50d8bce64abdf6fb23f02f6b4,
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 0
@@ -242,6 +242,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Mobile
+      objectReference: {fileID: 0}
+    - target: {fileID: 5384454113201236597, guid: 09e446bd72f00d342aa94c4ce4da53bf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3044043530286870118, guid: 09e446bd72f00d342aa94c4ce4da53bf,
         type: 3}

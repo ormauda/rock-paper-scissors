@@ -90,6 +90,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock Button
       objectReference: {fileID: 0}
+    - target: {fileID: 4020093516356277227, guid: a1c19bfe284f66347af3c6ee1677163d,
+        type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 1644029170849314481}
+    - target: {fileID: 6860992815787830346, guid: a1c19bfe284f66347af3c6ee1677163d,
+        type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7325285157111098298, guid: a1c19bfe284f66347af3c6ee1677163d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -194,16 +204,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4020093516356277227, guid: a1c19bfe284f66347af3c6ee1677163d,
-        type: 3}
-      propertyPath: m_TargetGraphic
-      value: 
-      objectReference: {fileID: 1644029170849314481}
-    - target: {fileID: 6860992815787830346, guid: a1c19bfe284f66347af3c6ee1677163d,
-        type: 3}
-      propertyPath: m_Text
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1c19bfe284f66347af3c6ee1677163d, type: 3}
@@ -442,7 +442,7 @@ PrefabInstance:
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -316
+      value: -271.2
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
@@ -452,7 +452,7 @@ PrefabInstance:
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 124.89
+      value: 276.5
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
@@ -509,6 +509,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Paper Button
       objectReference: {fileID: 0}
+    - target: {fileID: 7075447007714911592, guid: 748a433252795264fbbffa05e44829f1,
+        type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 9070050015101589479}
     - target: {fileID: 8950724628077964942, guid: 748a433252795264fbbffa05e44829f1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -614,11 +619,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7075447007714911592, guid: 748a433252795264fbbffa05e44829f1,
-        type: 3}
-      propertyPath: m_TargetGraphic
-      value: 
-      objectReference: {fileID: 9070050015101589479}
     - target: {fileID: 1604776024453184154, guid: 748a433252795264fbbffa05e44829f1,
         type: 3}
       propertyPath: m_Text
